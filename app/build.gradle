@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace 'com.example.netfix'
+    namespace 'com.muabdz.netfix'
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.example.netfix"
+        applicationId "com.muabdz.netfix"
         minSdk 24
         targetSdk 33
         versionCode 1

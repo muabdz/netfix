@@ -1,4 +1,4 @@
-package com.example.netfix
+package com.muabdz.netfix
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
