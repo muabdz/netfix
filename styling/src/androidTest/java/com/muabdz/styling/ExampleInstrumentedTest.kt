@@ -1,4 +1,4 @@
-package com.example.styling
+package com.muabdz.styling
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

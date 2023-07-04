@@ -1,4 +1,4 @@
-package com.example.styling
+package com.muabdz.styling
 
 import org.junit.Test
 
