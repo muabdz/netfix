@@ -8,6 +8,7 @@ import androidx.lifecycle.ViewModel
 import androidx.viewbinding.ViewBinding
 import com.muabdz.core.exception.ApiErrorException
 import com.muabdz.core.exception.NoInternetConnectionException
+import com.muabdz.core.utils.getErrorMessage
 import com.muabdz.netfix.R
 import java.lang.Exception
 
@@ -34,15 +35,7 @@ abstract class BaseActivity<B : ViewBinding, VM : ViewModel>(
 
     open fun showError(isErrorEnabled: Boolean, exception: Exception) {
         if (isErrorEnabled) {
-            Toast.makeText(this, getErrorMessageByException(exception), Toast.LENGTH_SHORT).show()
-        }
-    }
-
-    private fun getErrorMessageByException(exception: Exception): String {
-        return when(exception) {
-            is NoInternetConnectionException -> getString(R.string.message_error_no_internet)
-            is ApiErrorException -> exception.message.orEmpty()
-            else -> getString(R.string.message_error_unknown)
+            Toast.makeText(this, getErrorMessage(exception), Toast.LENGTH_SHORT).show()
         }
     }
 
