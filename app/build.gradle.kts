@@ -8,11 +8,11 @@ android {
     compileSdk = 33
 
     defaultConfig {
-        applicationId = "com.muabdz.netfix"
-        minSdk = 24
-        targetSdk  = 33
-        versionCode = 1
-        versionName = "1.0"
+        applicationId = AndroidProjectConfig.applicationId
+        minSdk = AndroidProjectConfig.minSdk
+        targetSdk  = AndroidProjectConfig.targetSdk
+        versionCode = AndroidProjectConfig.versionCode
+        versionName = AndroidProjectConfig.versionName
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -21,7 +21,8 @@ android {
         release {
             isMinifyEnabled = false
             proguardFiles (
-                getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
             )
         }
     }
