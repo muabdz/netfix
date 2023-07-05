@@ -1,10 +1,12 @@
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
+    id("kotlin-android")
+    id("kotlin-parcelize")
 }
 
 android {
-    namespace = "com.muabdz.styling"
+    namespace = "com.muabdz.shared"
     compileSdk = AndroidProjectConfig.compileSdk
 
     defaultConfig {
@@ -34,5 +36,10 @@ android {
 }
 
 dependencies {
-    api(Libraries.googleAndroidMaterial)
+    //chucker
+    debugImplementation(Libraries.chucker)
+    debugImplementation(Libraries.chuckerNoOp)
+
+    //core module
+    api(project(":core"))
 }

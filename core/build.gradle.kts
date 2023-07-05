@@ -7,7 +7,7 @@ plugins {
 }
 
 android {
-    namespace = AndroidProjectConfig.applicationId
+    namespace = "com.muabdz.core"
     compileSdk = AndroidProjectConfig.compileSdk
 
     defaultConfig {
