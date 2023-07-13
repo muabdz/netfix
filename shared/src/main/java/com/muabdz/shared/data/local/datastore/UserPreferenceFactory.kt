@@ -5,6 +5,7 @@ import androidx.datastore.core.DataStore
 import androidx.datastore.core.handlers.ReplaceFileCorruptionHandler
 import androidx.datastore.preferences.core.PreferenceDataStoreFactory
 import androidx.datastore.preferences.core.Preferences
+import androidx.datastore.preferences.core.booleanPreferencesKey
 import androidx.datastore.preferences.core.emptyPreferences
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStoreFile
@@ -30,7 +31,7 @@ class UserPreferenceFactory(private val appContext: Context) {
 
 object UserPreferenceKey {
     val userToken = stringPreferencesKey(PreferenceKey.PREF_USER_TOKEN)
-    val isUserLoggedIn = stringPreferencesKey(PreferenceKey.PREF_IS_USER_LOGGED_IN)
+    val isUserLoggedIn = booleanPreferencesKey(PreferenceKey.PREF_IS_USER_LOGGED_IN)
     val userObject = stringPreferencesKey(PreferenceKey.PREF_USER_OBJECT)
 }
 
