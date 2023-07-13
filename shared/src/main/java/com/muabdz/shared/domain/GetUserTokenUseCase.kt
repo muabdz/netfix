@@ -18,7 +18,7 @@ class GetUserTokenUseCase(
         return flow {
             repository.getUserToken().map {
                 it.suspendSubscribe(doOnSuccess = { result ->
-                    emit(ViewResource.Success(it.payload.orEmpty()))
+                    emit(ViewResource.Success(result.payload.orEmpty()))
                 }, doOnError = { error ->
                     emit(ViewResource.Error(error.exception))
                 })
