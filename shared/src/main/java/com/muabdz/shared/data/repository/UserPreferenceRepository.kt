@@ -1,4 +1,4 @@
-package com.muabdz.shared.repository
+package com.muabdz.shared.data.repository
 
 import com.muabdz.core.wrapper.DataResource
 import com.muabdz.shared.data.local.datastore.UserPreferenceDataSource

@@ -1,4 +1,4 @@
-package com.muabdz.shared.repository
+package com.muabdz.shared.data.repository
 
 import com.google.gson.Gson
 import com.google.gson.JsonParseException
