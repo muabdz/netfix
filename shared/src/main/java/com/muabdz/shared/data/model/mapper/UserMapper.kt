@@ -2,7 +2,7 @@ package com.muabdz.shared.data.model.mapper
 
 import com.muabdz.shared.data.model.response.UserResponse
 import com.muabdz.shared.data.model.viewparam.UserViewParam
-import com.muabdz.shared.utils.ViewParamMapper
+import com.muabdz.shared.utils.mapper.ViewParamMapper
 
 object UserMapper : ViewParamMapper<UserResponse, UserViewParam> {
     override fun toViewParam(dataObject: UserResponse?): UserViewParam = UserViewParam(

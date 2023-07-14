@@ -2,7 +2,7 @@ package com.muabdz.shared.data.model.mapper
 
 import com.muabdz.shared.data.model.response.MovieResponse
 import com.muabdz.shared.data.model.viewparam.MovieViewParam
-import com.muabdz.shared.utils.ViewParamMapper
+import com.muabdz.shared.utils.mapper.ViewParamMapper
 
 object MovieMapper : ViewParamMapper<MovieResponse, MovieViewParam> {
     override fun toViewParam(dataObject: MovieResponse?): MovieViewParam = MovieViewParam(

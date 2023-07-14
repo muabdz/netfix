@@ -1,16 +1,17 @@
-package com.muabdz.shared.utils
+package com.muabdz.shared.utils.mapper
 
 interface Mapper<DTO,ViewParam>
 
-interface ViewParamMapper<DTO, ViewParam> : Mapper<DTO,ViewParam> {
+interface ViewParamMapper<DTO, ViewParam> : Mapper<DTO, ViewParam> {
     fun toViewParam(dataObject: DTO?): ViewParam
 }
 
-interface DataObjectMapper<DTO, ViewParam> : Mapper<DTO,ViewParam> {
+interface DataObjectMapper<DTO, ViewParam> : Mapper<DTO, ViewParam> {
     fun toDataObject(viewParam: ViewParam?): DTO
 }
 
-interface DataMapper<DTO, ViewParam> : ViewParamMapper<DTO, ViewParam>, DataObjectMapper<DTO, ViewParam>
+interface DataMapper<DTO, ViewParam> : ViewParamMapper<DTO, ViewParam>,
+    DataObjectMapper<DTO, ViewParam>
 
 class ListMapper<DTO, ViewParam>(private val mapper: Mapper<DTO, ViewParam>) {
     fun toDataObjects(viewParams: List<ViewParam>?): List<DTO> {
