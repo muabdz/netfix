@@ -3,8 +3,7 @@ package com.muabdz.core.utils
 import android.content.Context
 import com.muabdz.core.exception.ApiErrorException
 import com.muabdz.core.exception.NoInternetConnectionException
-import com.muabdz.netfix.R
-import java.lang.Exception
+import com.muabdz.styling.R
 
 fun Context.getErrorMessage(exception: Exception) : String {
     return when(exception) {

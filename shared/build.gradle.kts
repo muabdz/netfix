@@ -38,7 +38,7 @@ android {
 dependencies {
     //chucker
     debugImplementation(Libraries.chucker)
-    debugImplementation(Libraries.chuckerNoOp)
+//    debugImplementation(Libraries.chuckerNoOp)
 
     //core module
     api(project(":core"))

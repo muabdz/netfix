@@ -5,15 +5,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
 import androidx.viewbinding.ViewBinding
-import com.muabdz.core.exception.ApiErrorException
-import com.muabdz.core.exception.NoInternetConnectionException
 import com.muabdz.core.utils.getErrorMessage
-import com.muabdz.netfix.R
-import java.lang.Exception
 
 abstract class BaseFragment<B : ViewBinding, VM : ViewModel>(
     val bindingFactory : (LayoutInflater, ViewGroup?, Boolean) -> B

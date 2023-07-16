@@ -6,11 +6,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModel
 import androidx.viewbinding.ViewBinding
-import com.muabdz.core.exception.ApiErrorException
-import com.muabdz.core.exception.NoInternetConnectionException
 import com.muabdz.core.utils.getErrorMessage
-import com.muabdz.netfix.R
-import java.lang.Exception
 
 abstract class BaseActivity<B : ViewBinding, VM : ViewModel>(
     val bindingFactory : (LayoutInflater) -> B
