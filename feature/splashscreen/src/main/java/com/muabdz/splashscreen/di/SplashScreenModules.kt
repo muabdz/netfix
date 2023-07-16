@@ -13,7 +13,7 @@ import org.koin.androidx.viewmodel.dsl.viewModelOf
 import org.koin.core.module.Module
 import org.koin.dsl.module
 
-object SplashScreenModule : FeatureModules{
+object SplashScreenModules : FeatureModules{
     override val repositories: Module = module {
         single<SplashScreenRepository> { SplashScreenRepositoryImpl(get()) }
     }
