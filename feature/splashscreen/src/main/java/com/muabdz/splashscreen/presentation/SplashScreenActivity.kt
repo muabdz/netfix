@@ -1,13 +1,17 @@
 package com.muabdz.splashscreen.presentation
 
+import android.content.Intent
 import android.widget.Toast
 import com.muabdz.core.base.BaseActivity
+import com.muabdz.shared.router.ActivityRouter
 import com.muabdz.shared.utils.ext.subscribe
 import com.muabdz.splashscreen.databinding.ActivitySplashScreenBinding
 import org.koin.android.ext.android.inject
 
 class SplashScreenActivity : BaseActivity<ActivitySplashScreenBinding, SplashScreenViewModel>(ActivitySplashScreenBinding::inflate) {
     override val viewModel: SplashScreenViewModel by inject()
+
+    val activityRouter: ActivityRouter by inject()
 
     override fun initView() {
         viewModel.syncUser()
@@ -31,11 +35,17 @@ class SplashScreenActivity : BaseActivity<ActivitySplashScreenBinding, SplashScr
     }
 
     private fun navigateToLogin() {
-        Toast.makeText(this, "Navigate to login", Toast.LENGTH_SHORT).show()
+        startActivity(activityRouter.loginActivity(this).apply {
+            flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+        })
+        finish()
     }
 
     private fun navigateToHome() {
-        Toast.makeText(this, "Navigate to home", Toast.LENGTH_SHORT).show()
+        startActivity(activityRouter.homeActivity(this).apply {
+            flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+        })
+        finish()
     }
 
 
