@@ -14,3 +14,9 @@ dependencyResolutionManagement {
 }
 rootProject.name = "Netfix"
 include ':app'
+include ':styling'
+include ':core'
+include ':shared'
+include ':feature:splashscreen'
+include ':feature:home'
+include ':feature:login'

@@ -1,0 +1,1 @@
+D:\Projects\Android Projects\Netfix\buildSrc\build\classes\kotlin\main\AndroidProjectConfig.class;D:\Projects\Android Projects\Netfix\buildSrc\build\classes\kotlin\main\Libraries$Versions.class;D:\Projects\Android Projects\Netfix\buildSrc\build\classes\kotlin\main\Libraries.class
