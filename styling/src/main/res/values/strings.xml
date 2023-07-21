@@ -7,6 +7,8 @@
     <string name="my_list">My list</string>
     <string name="share">Share</string>
     <string name="details_amp_more"><![CDATA[Details & More]]></string>
+    <string name="error_field_password">Please fill password</string>
+    <string name="error_field_email">Email is invalid</string>
 
     <string-array name="gender_list">
         <item>Male</item>
