@@ -31,7 +31,7 @@ class CheckLoginFieldUseCase(dispatcher: CoroutineDispatcher) : BaseUseCase<Logi
                 if (result.isEmpty()) {
                     emit(ViewResource.Success(result))
                 } else {
-                    emit(ViewResource.Error(FieldErrorException(), result))
+                    emit(ViewResource.Error(FieldErrorException(result), result))
                 }
             }?: throw IllegalStateException("Param Required")
         }
