@@ -3,8 +3,8 @@ package com.muabdz.login.domain
 import com.muabdz.core.base.BaseUseCase
 import com.muabdz.core.exception.FieldErrorException
 import com.muabdz.core.wrapper.ViewResource
+import com.muabdz.login.R
 import com.muabdz.shared.utils.StringUtils
-import com.muabdz.styling.R
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -45,7 +45,9 @@ class CheckLoginFieldUseCase(dispatcher: CoroutineDispatcher) : BaseUseCase<Logi
     }
 
     private fun isEmailValid(email: String): Pair<Int, Int>? {
-        return if (StringUtils.isEmailValid(email)) {
+        return if (email.isEmpty()) {
+            Pair(FIELD_EMAIL, R.string.error_field_email_empty)
+        } else if (StringUtils.isEmailValid(email)) {
             Pair(FIELD_EMAIL, R.string.error_field_email)
         } else {
             null
