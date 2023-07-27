@@ -44,7 +44,7 @@ class CheckLoginFieldUseCase(dispatcher: CoroutineDispatcher) : BaseUseCase<Logi
     private fun isEmailValid(email: String): Pair<Int, Int>? {
         return if (email.isEmpty()) {
             Pair(FIELD_EMAIL, R.string.error_field_email_empty)
-        } else if (StringUtils.isEmailValid(email)) {
+        } else if (!StringUtils.isEmailValid(email)) {
             Pair(FIELD_EMAIL, R.string.error_field_email)
         } else {
             null
