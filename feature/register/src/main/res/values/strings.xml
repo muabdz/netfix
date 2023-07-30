@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="error_field_empty">Please fill this field</string>
+    <string name="error_field_email">Email is invalid</string>
+    <string name="error_field_username">Username length min. 8 characters</string>
+    <string name="error_field_username_space">Username should not contains space</string>
+    <string name="error_field_password">password length min. 8 characters</string>
+</resources>
