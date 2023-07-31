@@ -8,8 +8,10 @@ import com.muabdz.register.data.repository.RegisterRepository
 import com.muabdz.register.data.repository.RegisterRepositoryImpl
 import com.muabdz.register.domain.CheckRegisterFieldUseCase
 import com.muabdz.register.domain.RegisterUserUseCase
+import com.muabdz.register.presentation.ui.RegisterViewModel
 import com.muabdz.shared.data.remote.NetworkClient
 import kotlinx.coroutines.Dispatchers
+import org.koin.androidx.viewmodel.dsl.viewModelOf
 import org.koin.core.module.Module
 import org.koin.dsl.module
 
@@ -18,7 +20,7 @@ object RegisterModules : FeatureModules {
         single<RegisterRepository> { RegisterRepositoryImpl(get()) }
     }
     override val viewModels: Module = module {
-        // TODO: implement later
+        viewModelOf(::RegisterViewModel)
     }
     override val dataSources: Module = module {
         single<RegisterDataSource> { RegisterDataSourceImpl(get())}
