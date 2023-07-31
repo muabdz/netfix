@@ -25,7 +25,7 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>(Activit
             )
         }
         binding.btnAlreadyHaveAccount.setOnClickListener {
-            // TODO: to register
+            startActivity(router.registerActivity(this))
         }
         binding.etPassword.listen(beforeTextChanged =  {
             binding.tilPassword.endIconMode = TextInputLayout.END_ICON_PASSWORD_TOGGLE
