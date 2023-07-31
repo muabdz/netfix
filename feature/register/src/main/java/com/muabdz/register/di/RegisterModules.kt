@@ -6,7 +6,10 @@ import com.muabdz.register.data.network.datasource.RegisterDataSourceImpl
 import com.muabdz.register.data.network.services.RegisterFeatureApi
 import com.muabdz.register.data.repository.RegisterRepository
 import com.muabdz.register.data.repository.RegisterRepositoryImpl
+import com.muabdz.register.domain.CheckRegisterFieldUseCase
+import com.muabdz.register.domain.RegisterUserUseCase
 import com.muabdz.shared.data.remote.NetworkClient
+import kotlinx.coroutines.Dispatchers
 import org.koin.core.module.Module
 import org.koin.dsl.module
 
@@ -21,7 +24,8 @@ object RegisterModules : FeatureModules {
         single<RegisterDataSource> { RegisterDataSourceImpl(get())}
     }
     override val useCases: Module = module {
-        // TODO: implement later
+        single { CheckRegisterFieldUseCase(Dispatchers.IO) }
+        single { RegisterUserUseCase(get(), get(), get(), Dispatchers.IO) }
     }
     override val network: Module = module {
         single<RegisterFeatureApi> { get<NetworkClient>().create() }
