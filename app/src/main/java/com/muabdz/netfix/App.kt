@@ -3,6 +3,7 @@ package com.muabdz.netfix
 import android.app.Application
 import com.muabdz.login.di.LoginModules
 import com.muabdz.netfix.di.AppModules
+import com.muabdz.register.di.RegisterModules
 import com.muabdz.shared.di.SharedModules
 import com.muabdz.splashscreen.di.SplashScreenModules
 import org.koin.android.ext.koin.androidContext
@@ -20,7 +21,8 @@ class App: Application() {
                 AppModules.getModules() +
                 SharedModules.getModules() +
                 SplashScreenModules.getModules() +
-                LoginModules.getModules()
+                LoginModules.getModules() +
+                RegisterModules.getModules()
             )
         }
     }
