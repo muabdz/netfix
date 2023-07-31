@@ -6,6 +6,7 @@ import com.muabdz.register.data.repository.RegisterRepository
 import com.muabdz.shared.data.model.mapper.UserMapper
 import com.muabdz.shared.data.model.viewparam.UserViewParam
 import com.muabdz.shared.domain.SaveAuthDataUseCase
+import com.muabdz.shared.utils.GenderUtils
 import com.muabdz.shared.utils.ext.suspendSubscribe
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow
@@ -21,11 +22,11 @@ class RegisterUserUseCase(
 
     override suspend fun execute(param: RegisterParam?): Flow<ViewResource<UserViewParam?>> {
         return flow {
-            param?.let {
+            mutateParam(param)?.let { p ->
                 emit(ViewResource.Loading())
-                checkRegisterFieldUseCase(param).first().suspendSubscribe(
+                checkRegisterFieldUseCase(p).first().suspendSubscribe(
                     doOnSuccess = { _ ->
-                        repository.registerUser(param.birthdate, param.email, param.gender, param.password, param.username).collect { registerResult ->
+                        repository.registerUser(p.birthdate, p.email, p.gender, p.password, p.username).collect { registerResult ->
                             registerResult.suspendSubscribe(
                                 doOnSuccess = {
                                     val result = registerResult.payload?.data
@@ -56,10 +57,14 @@ class RegisterUserUseCase(
         }
     }
 
+    private fun mutateParam(param: RegisterParam?) = param?.apply {
+        this.gender = GenderUtils.parseGender(this.gender)
+    }
+
     data class RegisterParam(
         val birthdate: String,
         val email: String,
-        val gender: String,
+        var gender: String,
         val password: String,
         val username: String
     )
