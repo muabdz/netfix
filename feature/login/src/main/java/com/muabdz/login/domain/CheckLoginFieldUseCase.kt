@@ -22,7 +22,7 @@ class CheckLoginFieldUseCase(dispatcher: CoroutineDispatcher) : BaseUseCase<Logi
                 isEmailValid(param.email)?.let {
                     result.add(it)
                 }
-                isPasswordValid(param.email)?.let {
+                isPasswordValid(param.password)?.let {
                     result.add(it)
                 }
                 if (result.isEmpty()) {
