@@ -1,4 +1,4 @@
-package com.muabdz.home.presentation.ui
+package com.muabdz.home.presentation.ui.home
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
