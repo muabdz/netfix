@@ -5,7 +5,7 @@ import com.muabdz.shared.data.model.response.BaseResponse
 import com.muabdz.shared.data.model.response.MovieResponse
 import retrofit2.http.GET
 
-interface HomeFeatureService {
+interface HomeFeatureApi {
 
     @GET("api/v1/homepage")
     suspend fun fetchHomeFeeds(): BaseResponse<HomeFeedsResponse>
