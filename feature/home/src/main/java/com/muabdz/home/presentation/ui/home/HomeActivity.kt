@@ -8,7 +8,7 @@ import com.muabdz.home.R
 import com.muabdz.home.databinding.ActivityHomeBinding
 import com.muabdz.home.presentation.ui.homefeeds.HomeFeedsFragment
 import com.muabdz.home.presentation.ui.watchlist.WatchlistFragment
-import org.koin.android.ext.android.inject
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class HomeActivity :
     BaseActivity<ActivityHomeBinding, HomeViewModel>(ActivityHomeBinding::inflate) {
@@ -23,7 +23,7 @@ class HomeActivity :
         }
     }
 
-    override val viewModel: HomeViewModel by inject()
+    override val viewModel: HomeViewModel by viewModel()
 
     override fun initView() {
         setupFragment()
