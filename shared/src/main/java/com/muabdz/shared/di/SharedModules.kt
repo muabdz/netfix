@@ -14,6 +14,7 @@ import com.muabdz.shared.data.repository.SharedApiRepository
 import com.muabdz.shared.data.repository.SharedApiRepositoryImpl
 import com.muabdz.shared.data.repository.UserPreferenceRepository
 import com.muabdz.shared.data.repository.UserPreferenceRepositoryImpl
+import com.muabdz.shared.domain.GetCurrentUserUseCase
 import com.muabdz.shared.domain.GetUserTokenUseCase
 import com.muabdz.shared.domain.SaveAuthDataUseCase
 import kotlinx.coroutines.Dispatchers
@@ -54,6 +55,7 @@ object SharedModules : BaseModule {
     private val sharedUseCase = module {
         single { GetUserTokenUseCase(get(), Dispatchers.IO) }
         single { SaveAuthDataUseCase(get(), Dispatchers.IO) }
+        single { GetCurrentUserUseCase(get(), Dispatchers.IO)}
     }
 
     private val common = module {
