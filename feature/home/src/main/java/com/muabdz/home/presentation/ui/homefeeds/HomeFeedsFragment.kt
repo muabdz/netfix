@@ -1,5 +1,6 @@
 package com.muabdz.home.presentation.ui.homefeeds
 
+import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -104,7 +105,19 @@ class HomeFeedsFragment : BaseFragment<FragmentHomeFeedsBinding, HomeViewModel>(
                 )
             })
         }
-        // TODO: add observe data
+        viewModel.getWatchlistResult().observe(this) {
+            it.subscribe(
+                doOnSuccess = { result ->
+                    Toast.makeText(
+                        requireContext(),
+                        if (result.payload?.isUserWatchlist == true)
+                            getString(R.string.text_add_watchlist_success)
+                        else
+                            getString(R.string.text_remove_watchlist_success),
+                        Toast.LENGTH_SHORT
+                    ).show()
+                })
+        }
     }
 
     private fun initData() {
