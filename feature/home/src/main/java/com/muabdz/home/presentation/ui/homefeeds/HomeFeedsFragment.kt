@@ -13,6 +13,8 @@ import com.muabdz.home.presentation.ui.home.HomeViewModel
 import com.muabdz.shared.data.model.viewparam.MovieViewParam
 import com.muabdz.shared.utils.ColorUtils
 import com.muabdz.shared.utils.ext.subscribe
+import com.muabdz.shared.utils.textdrawable.ColorGenerator
+import com.muabdz.shared.utils.textdrawable.TextDrawable
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import kotlin.math.min
 
@@ -86,6 +88,21 @@ class HomeFeedsFragment : BaseFragment<FragmentHomeFeedsBinding, HomeViewModel>(
                     error.exception?.let { e -> showError(true, e) }
 
                 })
+        }
+        viewModel.currentUserResult.observe(this) {
+            it.subscribe(doOnSuccess = { result ->
+                binding.ivAvatarUser.setImageDrawable(
+                    TextDrawable.builder()
+                        .beginConfig()
+                        .bold()
+                        .toUpperCase()
+                        .endConfig()
+                        .buildRect(
+                            result.payload?.username?.get(0).toString(),
+                            ColorGenerator.MATERIAL.randomColor
+                        )
+                )
+            })
         }
         // TODO: add observe data
     }
