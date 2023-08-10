@@ -32,7 +32,7 @@ class HomeFeedsFragment : BaseFragment<FragmentHomeFeedsBinding, HomeViewModel>(
     private val homeAdapter: HomeAdapter by lazy {
         HomeAdapter(object : HomeAdapterClickListener {
             override fun onMyListClicked(movieViewParam: MovieViewParam) {
-                // TODO: add to watchlist
+                viewModel.addOrRemoveWatchlist(movieViewParam)
             }
 
             override fun onPlayMovieClicked(movieViewParam: MovieViewParam) {
