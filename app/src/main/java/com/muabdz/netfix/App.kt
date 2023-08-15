@@ -1,6 +1,7 @@
 package com.muabdz.netfix
 
 import android.app.Application
+import com.muabdz.detail.di.DetailModules
 import com.muabdz.home.di.HomeModules
 import com.muabdz.login.di.LoginModules
 import com.muabdz.netfix.di.AppModules
@@ -24,7 +25,8 @@ class App: Application() {
                 SplashScreenModules.getModules() +
                 LoginModules.getModules() +
                 RegisterModules.getModules() +
-                HomeModules.getModules()
+                HomeModules.getModules() +
+                DetailModules.getModules()
             )
         }
     }
