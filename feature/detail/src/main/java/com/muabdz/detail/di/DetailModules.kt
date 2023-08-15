@@ -7,8 +7,10 @@ import com.muabdz.detail.data.network.service.DetailFeatureApi
 import com.muabdz.detail.data.repository.DetailRepository
 import com.muabdz.detail.data.repository.DetailRepositoryImpl
 import com.muabdz.detail.domain.GetMovieDetailUseCase
+import com.muabdz.detail.presentation.ui.DetailViewModel
 import com.muabdz.shared.data.remote.NetworkClient
 import kotlinx.coroutines.Dispatchers
+import org.koin.androidx.viewmodel.dsl.viewModelOf
 import org.koin.core.module.Module
 import org.koin.dsl.module
 
@@ -17,7 +19,7 @@ object DetailModules: FeatureModules {
         single<DetailRepository> { DetailRepositoryImpl(get()) }
     }
     override val viewModels: Module = module {
-        // TODO: implement later
+        viewModelOf(::DetailViewModel)
     }
     override val dataSources: Module = module {
         single<DetailDataSource> { DetailDataSourceImpl(get()) }
