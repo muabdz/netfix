@@ -6,7 +6,9 @@ import com.muabdz.detail.data.network.datasource.DetailDataSourceImpl
 import com.muabdz.detail.data.network.service.DetailFeatureApi
 import com.muabdz.detail.data.repository.DetailRepository
 import com.muabdz.detail.data.repository.DetailRepositoryImpl
+import com.muabdz.detail.domain.GetMovieDetailUseCase
 import com.muabdz.shared.data.remote.NetworkClient
+import kotlinx.coroutines.Dispatchers
 import org.koin.core.module.Module
 import org.koin.dsl.module
 
@@ -21,7 +23,7 @@ object DetailModules: FeatureModules {
         single<DetailDataSource> { DetailDataSourceImpl(get()) }
     }
     override val useCases: Module = module {
-        // TODO: implement later
+        single { GetMovieDetailUseCase(get(), Dispatchers.IO) }
     }
     override val network: Module = module {
         single<DetailFeatureApi> { get<NetworkClient>().create() }
