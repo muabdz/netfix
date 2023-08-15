@@ -1,4 +1,4 @@
-package com.muabdz.detail.presentation.ui
+package com.muabdz.detail.presentation.ui.moviedetail
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
