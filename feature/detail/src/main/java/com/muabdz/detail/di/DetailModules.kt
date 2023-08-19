@@ -8,6 +8,7 @@ import com.muabdz.detail.data.repository.DetailRepository
 import com.muabdz.detail.data.repository.DetailRepositoryImpl
 import com.muabdz.detail.domain.GetMovieDetailUseCase
 import com.muabdz.detail.presentation.ui.moviedetail.DetailViewModel
+import com.muabdz.detail.presentation.ui.movieinfo.InfoViewModel
 import com.muabdz.shared.data.remote.NetworkClient
 import kotlinx.coroutines.Dispatchers
 import org.koin.androidx.viewmodel.dsl.viewModelOf
@@ -20,6 +21,7 @@ object DetailModules: FeatureModules {
     }
     override val viewModels: Module = module {
         viewModelOf(::DetailViewModel)
+        viewModelOf(::InfoViewModel)
     }
     override val dataSources: Module = module {
         single<DetailDataSource> { DetailDataSourceImpl(get()) }
