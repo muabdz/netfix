@@ -12,10 +12,12 @@ import com.muabdz.home.presentation.adapter.viewholder.HomeAdapter
 import com.muabdz.home.presentation.adapter.viewholder.HomeAdapterClickListener
 import com.muabdz.home.presentation.ui.home.HomeViewModel
 import com.muabdz.shared.data.model.viewparam.MovieViewParam
+import com.muabdz.shared.router.BottomSheetRouter
 import com.muabdz.shared.utils.ColorUtils
 import com.muabdz.shared.utils.ext.subscribe
 import com.muabdz.shared.utils.textdrawable.ColorGenerator
 import com.muabdz.shared.utils.textdrawable.TextDrawable
+import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import kotlin.math.min
 
@@ -25,6 +27,8 @@ class HomeFeedsFragment : BaseFragment<FragmentHomeFeedsBinding, HomeViewModel>(
 ) {
 
     override val viewModel: HomeViewModel by sharedViewModel()
+
+    private val bottomSheetRouter: BottomSheetRouter by inject()
 
     private val recyclerViewPool: RecyclerView.RecycledViewPool by lazy {
         RecyclerView.RecycledViewPool()
@@ -41,7 +45,8 @@ class HomeFeedsFragment : BaseFragment<FragmentHomeFeedsBinding, HomeViewModel>(
             }
 
             override fun onMovieClicked(movieViewParam: MovieViewParam) {
-                // TODO: show movie info
+                bottomSheetRouter.createMovieInfoBottomSheet(movieViewParam)
+                    .show(childFragmentManager, null)
             }
         }, recyclerViewPool)
     }

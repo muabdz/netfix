@@ -1,26 +1,27 @@
 plugins {
-    id ("com.android.application")
-    id ("org.jetbrains.kotlin.android")
+    id("com.android.library")
+    id("org.jetbrains.kotlin.android")
+    id("kotlin-android")
+    id("kotlin-parcelize")
+    id("kotlin-kapt")
 }
 
 android {
-    namespace = "com.muabdz.netfix"
+    namespace = "com.muabdz.detail"
     compileSdk = AndroidProjectConfig.compileSdk
 
     defaultConfig {
-        applicationId = AndroidProjectConfig.applicationId
         minSdk = AndroidProjectConfig.minSdk
-        targetSdk  = AndroidProjectConfig.targetSdk
-        versionCode = AndroidProjectConfig.versionCode
-        versionName = AndroidProjectConfig.versionName
+        targetSdk = AndroidProjectConfig.targetSdk
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles("consumer-rules.pro")
     }
 
     buildTypes {
         release {
             isMinifyEnabled = false
-            proguardFiles (
+            proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
@@ -33,13 +34,11 @@ android {
     kotlinOptions {
         jvmTarget = "17"
     }
+    buildFeatures {
+        viewBinding = true
+    }
 }
 
 dependencies {
     implementation(project(":shared"))
-    implementation(project(":feature:splashscreen"))
-    implementation(project(":feature:home"))
-    implementation(project(":feature:login"))
-    implementation(project(":feature:register"))
-    implementation(project(":feature:detail"))
 }

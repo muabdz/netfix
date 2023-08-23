@@ -8,8 +8,10 @@ import com.muabdz.home.data.repository.HomeRepository
 import com.muabdz.home.data.repository.HomeRepositoryImpl
 import com.muabdz.home.domain.GetHomeFeedsUseCase
 import com.muabdz.home.domain.GetUserWatchlistUseCase
+import com.muabdz.home.presentation.ui.home.HomeViewModel
 import com.muabdz.shared.data.remote.NetworkClient
 import kotlinx.coroutines.Dispatchers
+import org.koin.androidx.viewmodel.dsl.viewModelOf
 import org.koin.core.module.Module
 import org.koin.dsl.module
 
@@ -18,7 +20,7 @@ object HomeModules: FeatureModules {
         single<HomeRepository> { HomeRepositoryImpl(get()) }
     }
     override val viewModels: Module = module {
-        // TODO: implement later
+        viewModelOf(::HomeViewModel)
     }
     override val dataSources: Module = module {
         single<HomeDataSource> { HomeDataSourceImpl(get()) }
