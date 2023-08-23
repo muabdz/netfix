@@ -9,6 +9,7 @@ import coil.load
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.muabdz.detail.databinding.BottomSheetMovieInfoBinding
 import com.muabdz.shared.data.model.viewparam.MovieViewParam
+import com.muabdz.shared.router.ActivityRouter
 import com.muabdz.shared.utils.CommonUtils
 import com.muabdz.shared.utils.ext.subscribe
 import org.koin.android.ext.android.inject
@@ -17,6 +18,7 @@ class MovieInfoBottomSheet(private val movieViewParam: MovieViewParam): BottomSh
 
     private lateinit var binding: BottomSheetMovieInfoBinding
     private val viewModel: InfoViewModel by inject()
+    private val activityRouter : ActivityRouter by inject()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -65,7 +67,8 @@ class MovieInfoBottomSheet(private val movieViewParam: MovieViewParam): BottomSh
             viewModel.addOrRemoveWatchlist(movie)
         }
         binding.tvDetailMovie.setOnClickListener {
-            // TODO: open detail movie
+            startActivity(activityRouter.detailActivity(requireContext(), movie.id.toString()))
+
         }
     }
 
