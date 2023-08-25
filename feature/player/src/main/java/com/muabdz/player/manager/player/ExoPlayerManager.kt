@@ -1,0 +1,95 @@
+package com.muabdz.player.manager.player
+
+import androidx.lifecycle.LifecycleOwner
+import com.google.android.exoplayer2.C
+import com.google.android.exoplayer2.ExoPlayer
+import com.google.android.exoplayer2.MediaItem
+import com.google.android.exoplayer2.ui.StyledPlayerView
+import java.lang.Math.max
+
+class ExoPlayerManager(private val playerView: StyledPlayerView) : PlayerManager {
+
+    private var player : ExoPlayer? = null
+
+    private var startAutoPlay = false
+    private var startItemIndex = 0
+    private var startPosition: Long = 0L
+
+    private var currentMediaItem: MediaItem? = null
+
+    private fun releasePlayer() {
+        player?.let {
+            updateIndex()
+            it.release()
+            player = null
+            playerView.player = null
+        }
+    }
+
+    private fun initializePlayer() {
+        player = ExoPlayer.Builder(playerView.context).build().also {
+            playerView.player = it
+        }
+        //seek when there's current position when back
+        val haveStartPosition = startItemIndex != C.INDEX_UNSET
+        if (haveStartPosition) {
+            player?.seekTo(startItemIndex, startPosition)
+        }
+        play(currentMediaItem, haveStartPosition)
+    }
+
+
+    private fun updateIndex() {
+        player?.let {
+            startAutoPlay = it.playWhenReady
+            startItemIndex = it.currentMediaItemIndex
+            startPosition = max(0, it.contentPosition)
+        }
+    }
+
+    private fun clearIndex() {
+        startAutoPlay = true
+        startItemIndex = C.INDEX_UNSET
+        startPosition = C.TIME_UNSET
+    }
+
+    override fun play(videoUrl: String) {
+        play(MediaItem.Builder().setUri(videoUrl).build(), false)
+    }
+
+    private fun play(mediaItem: MediaItem?, haveStartPosition: Boolean = false) {
+        currentMediaItem = mediaItem
+        currentMediaItem?.let {
+            player?.playWhenReady = startAutoPlay
+            player?.setMediaItem(it, !haveStartPosition)
+            player?.prepare()
+        }
+    }
+
+    override fun onCreate(owner: LifecycleOwner) {
+        super.onCreate(owner)
+        clearIndex()
+    }
+
+    override fun onStart(owner: LifecycleOwner) {
+        super.onStart(owner)
+        initializePlayer()
+        playerView.onResume()
+    }
+
+    override fun onStop(owner: LifecycleOwner) {
+        super.onStop(owner)
+        playerView.onPause()
+        releasePlayer()
+    }
+
+    override fun onResume(owner: LifecycleOwner) {
+        super.onResume(owner)
+        if (player == null) {
+            initializePlayer()
+            playerView.onResume()
+        }
+    }
+
+
+}
