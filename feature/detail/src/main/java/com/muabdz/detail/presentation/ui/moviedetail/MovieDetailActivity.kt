@@ -7,12 +7,17 @@ import coil.load
 import com.muabdz.core.base.BaseActivity
 import com.muabdz.detail.databinding.ActivityMovieDetailBinding
 import com.muabdz.shared.data.model.viewparam.MovieViewParam
+import com.muabdz.shared.router.ActivityRouter
+import com.muabdz.shared.router.FragmentRouter
 import com.muabdz.shared.utils.CommonUtils
 import com.muabdz.shared.utils.ext.subscribe
 import org.koin.android.ext.android.inject
 
 class MovieDetailActivity : BaseActivity<ActivityMovieDetailBinding, DetailViewModel>(ActivityMovieDetailBinding::inflate) {
     override val viewModel: DetailViewModel by inject()
+
+    private val activityRouter: ActivityRouter by inject()
+    private val fragmentRouter: FragmentRouter by inject()
 
     private val movieId: String? by lazy { intent?.extras?.getString(EXTRA_MOVIE_ID) }
 
@@ -73,12 +78,17 @@ class MovieDetailActivity : BaseActivity<ActivityMovieDetailBinding, DetailViewM
                 viewModel.addOrRemoveWatchlist(movie)
             }
             clDetailMovie.cvPlay.setOnClickListener {
-                // TODO: move to player
+                activityRouter.playerActivity(this@MovieDetailActivity, movie.videoUrl)
             }
             layoutHeaderDetail.ivPlayTrailer.setOnClickListener {
                 binding.layoutDetail.layoutHeaderDetail.flHeaderPoster.isVisible = false
                 binding.layoutDetail.layoutHeaderDetail.containerPlayer.isVisible = true
-                // TODO: play trailer fragment
+                supportFragmentManager.beginTransaction().apply {
+                    replace(
+                        binding.layoutDetail.layoutHeaderDetail.containerPlayer.id,
+                        fragmentRouter.createPlayerFragment(movie.trailerUrl)
+                    )
+                }.commit()
             }
         }
     }

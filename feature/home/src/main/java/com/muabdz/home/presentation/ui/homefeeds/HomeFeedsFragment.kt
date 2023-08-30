@@ -12,6 +12,7 @@ import com.muabdz.home.presentation.adapter.viewholder.HomeAdapter
 import com.muabdz.home.presentation.adapter.viewholder.HomeAdapterClickListener
 import com.muabdz.home.presentation.ui.home.HomeViewModel
 import com.muabdz.shared.data.model.viewparam.MovieViewParam
+import com.muabdz.shared.router.ActivityRouter
 import com.muabdz.shared.router.BottomSheetRouter
 import com.muabdz.shared.utils.ColorUtils
 import com.muabdz.shared.utils.ext.subscribe
@@ -30,6 +31,8 @@ class HomeFeedsFragment : BaseFragment<FragmentHomeFeedsBinding, HomeViewModel>(
 
     private val bottomSheetRouter: BottomSheetRouter by inject()
 
+    private val activityRouter: ActivityRouter by inject()
+
     private val recyclerViewPool: RecyclerView.RecycledViewPool by lazy {
         RecyclerView.RecycledViewPool()
     }
@@ -41,7 +44,7 @@ class HomeFeedsFragment : BaseFragment<FragmentHomeFeedsBinding, HomeViewModel>(
             }
 
             override fun onPlayMovieClicked(movieViewParam: MovieViewParam) {
-                // TODO: go to player
+                startActivity(activityRouter.playerActivity(requireContext(), movieViewParam.videoUrl))
             }
 
             override fun onMovieClicked(movieViewParam: MovieViewParam) {

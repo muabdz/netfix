@@ -58,7 +58,7 @@ class MovieInfoBottomSheet(private val movieViewParam: MovieViewParam): BottomSh
             this.dismiss()
         }
         binding.llPlayMovie.setOnClickListener {
-            // TODO: open player
+            activityRouter.playerActivity(requireContext(), movie.videoUrl)
         }
         binding.llShare.setOnClickListener {
             CommonUtils.shareFilm(requireContext(), movie)
