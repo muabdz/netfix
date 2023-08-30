@@ -5,6 +5,7 @@ import android.content.Intent
 import com.muabdz.detail.presentation.ui.moviedetail.MovieDetailActivity
 import com.muabdz.home.presentation.ui.home.HomeActivity
 import com.muabdz.login.presentation.ui.LoginActivity
+import com.muabdz.player.presentation.ui.playeractivity.PlayerActivity
 import com.muabdz.register.presentation.ui.RegisterActivity
 import com.muabdz.shared.router.ActivityRouter
 
@@ -23,5 +24,9 @@ class ActivityRouterImpl: ActivityRouter {
 
     override fun detailActivity(context: Context, movieId: String): Intent {
         return MovieDetailActivity.createIntent(context, movieId)
+    }
+
+    override fun playerActivity(context: Context, videoUrl: String): Intent {
+        return PlayerActivity.createIntent(context, videoUrl)
     }
 }
