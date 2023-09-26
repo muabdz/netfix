@@ -43,4 +43,5 @@ dependencies {
     implementation(project(":feature:register"))
     implementation(project(":feature:detail"))
     implementation(project(":feature:player"))
+    implementation(project(":feature:profile"))
 }
